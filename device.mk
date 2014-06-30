@@ -3,7 +3,6 @@ $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    device/htc/primou/ramdisk/default.prop:root/default.prop \
     device/htc/primou/ramdisk/init.primou.rc:root/init.primou.rc \
     device/htc/primou/ramdisk/ueventd.primou.rc:root/ueventd.primou.rc \
     device/htc/primou/ramdisk/fstab.primou:root/fstab.primou
@@ -11,38 +10,17 @@ PRODUCT_COPY_FILES += \
 # Vendor
 $(call inherit-product-if-exists, vendor/htc/primou/primou-vendor.mk)
 
-# Misc. property overrides
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1 \
-    ro.com.google.gmsversion=2.3_r3 \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y \
-    ro.sf.lcd_density=240 \
-    dalvik.vm.debug.alloc=0 \
-    ro.vold.umsdirtyratio=20 \
-    ro.config.low_ram=true \
-    dalvik.vm.jit.codecachesize=0 \
-    ro.zram.default=0 \
-    debug.sf.hw=1 \
-    debug.sf.no_hw_vsync=1 \
-    ro.config.hw_fast_dormancy=1
-	
 PRODUCT_PROPERTY_OVERRIDES += \
     media.a1026.nsForVoiceRec=0 \
     media.a1026.enableA1026=0 \
     htc.audio.alt.enable=0 \
     htc.audio.hac.enable=1
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/primou/overlay
-
 # GPS / BT / Lights / Sensors
 PRODUCT_PACKAGES += \
     libbt-vendor \
     gps.primou \
-    librpc \
-    lights.primou \
-    sensors.primou
+    librpc
 
 # CFX Packages
 PRODUCT_PACKAGES += \
@@ -74,8 +52,7 @@ PRODUCT_COPY_FILES += \
 # ACDB
 PRODUCT_COPY_FILES += \
     device/htc/primou/configs/default.acdb:system/etc/firmware/default.acdb \
-    device/htc/primou/configs/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/primou/configs/default_org_wb.acdb:system/etc/firmware/default_org_wb.acdb
+    device/htc/primou/configs/default_org.acdb:system/etc/firmware/default_org.acdb
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
@@ -100,6 +77,10 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
     device/htc/primou/firmware/fw_bcm4330_p2p_b1.bin:system/etc/firmware/fw_bcm4330_p2p_b1.bin \
     device/htc/primou/firmware/calibration:system/etc/calibration
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.goo.developerid=Rastomanchik \
+	ro.goo.version=$(shell date -u +%Y%m%d)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)

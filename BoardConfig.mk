@@ -5,19 +5,14 @@ USE_CAMERA_STUB := true
 
 TARGET_BOOTLOADER_BOARD_NAME := primou
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := no_console_suspend=1  androidboot.selinux=permissive
+BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
 BOARD_KERNEL_BASE := 0x13F00000
-BOARD_KERNEL_PAGE_SIZE := 2048
+BOARD_KERNEL_PAGE_SIZE := 4096
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := primou
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
-# RIL
-BOARD_USES_LEGACY_RIL := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 585101312
@@ -32,13 +27,14 @@ TARGET_KERNEL_SOURCE := kernel/htc/primou
 TARGET_KERNEL_CONFIG := primou_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.9
 
-TARGET_ARCH_LOWMEM := true
-
 # Recovery
+DEVICE_RESOLUTION := 480x800
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := device/htc/primou/ramdisk/fstab.primou
-RECOVERY_FSTAB_VERSION := 2
-USE_SET_METADATA := false
+TARGET_RECOVERY_FSTAB := device/htc/primou/recovery/recovery.fstab
+TARGET_RECOVERY_INITRC := device/htc/primou/recovery/init.rc
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+SKIP_SET_METADATA := true
+BRIGHTNESS_SYS_FILE := /sys/devices/platform/leds-pm8058/leds/keyboard-backlight/brightness
 
 # File System
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -46,10 +42,6 @@ BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_USES_MMCUTILS := false
 BOARD_HAS_NO_MISC_PARTITION := false
-
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
 
 # No SDK blobs
 BUILD_EMULATOR_SENSORS_MODULE := false
