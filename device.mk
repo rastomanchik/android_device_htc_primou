@@ -78,9 +78,5 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/firmware/fw_bcm4330_p2p_b1.bin:system/etc/firmware/fw_bcm4330_p2p_b1.bin \
     device/htc/primou/firmware/calibration:system/etc/calibration
 
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.goo.developerid=Rastomanchik \
-	ro.goo.version=$(shell date -u +%Y%m%d)
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
