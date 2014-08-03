@@ -4,11 +4,15 @@ $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 # Ramdisk
 PRODUCT_COPY_FILES += \
     device/htc/primou/ramdisk/init.primou.rc:root/init.primou.rc \
+    device/htc/primou/ramdisk/init.htc7x30.usb.rc:root/init.htc7x30.usb.rc \
     device/htc/primou/ramdisk/ueventd.primou.rc:root/ueventd.primou.rc \
     device/htc/primou/ramdisk/fstab.primou:root/fstab.primou
 
 # Vendor
 $(call inherit-product-if-exists, vendor/htc/primou/primou-vendor.mk)
+
+# Qcom proprietary
+$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.a1026.nsForVoiceRec=0 \
@@ -62,9 +66,6 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
     device/htc/primou/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv 
 	
-# Inherit qcom proprietary blobs
-$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
-
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # BCM4330 firmware
@@ -79,4 +80,4 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/firmware/calibration:system/etc/calibration
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
