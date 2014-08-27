@@ -40,8 +40,23 @@ mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2
 # For the default value of agps
 ro.ril.def.agps.mode=2
 
-ro.kernel.checkjni=0
+# Save Some battery
 pm.sleep_mode=1
+
+# Disable sending data and logging
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+dalvik.vm.checkjni=false
+profiler.force_disable_err_rpt=1
+profiler.force_disable_ulog=1
+
+# Ui Tweaks
+ro.max.fling_velocity=12000 
+ro.min.fling_velocity=8000
+ro.media.enc.jpeg.quality=100
+ro.media.dec.jpeg.memcap=8000000
+ro.media.enc.hprof.vid.bps=8000000
+
 ro.ril.disable.power.collapse=1
 persist.sys.purgeable_assets=1
 windowsmgr.max_events_per_sec=150

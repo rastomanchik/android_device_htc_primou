@@ -29,7 +29,6 @@ PRODUCT_PACKAGES += \
 # CFX Packages
 PRODUCT_PACKAGES += \
     Torch \
-    FileManager \
     e2fsck
 
 # Input device config
@@ -65,7 +64,7 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
     device/htc/primou/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
     device/htc/primou/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv 
-	
+
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
 # BCM4330 firmware
