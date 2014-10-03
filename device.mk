@@ -14,6 +14,9 @@ $(call inherit-product-if-exists, vendor/htc/primou/primou-vendor.mk)
 # Qcom proprietary
 $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
+# Gapps-minimal 
+$(call inherit-product, vendor/gapps_min/gapps-vendor.mk)
+
 PRODUCT_PROPERTY_OVERRIDES += \
     media.a1026.nsForVoiceRec=0 \
     media.a1026.enableA1026=0 \
@@ -62,7 +65,6 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
     device/htc/primou/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
     device/htc/primou/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
-    device/htc/primou/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
     device/htc/primou/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv 
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)

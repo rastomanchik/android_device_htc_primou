@@ -16,8 +16,6 @@ on early-fs
 
 on fs
 	mount_all fstab.primou
-	# activate zram
-	swapon_all fstab.primou
 
 on post-fs
 	chmod 0771 /cache

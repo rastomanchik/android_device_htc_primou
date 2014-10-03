@@ -9,12 +9,7 @@ PRODUCT_BRAND := htc
 PRODUCT_DEVICE := primou
 PRODUCT_MODEL := One V
 PRODUCT_MANUFACTURER := HTC
-TARGET_UNOFFICIAL_BUILD_ID := BETA-10_byRastomanchik
+TARGET_UNOFFICIAL_BUILD_ID := BETA-19_byRastomanchik
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_primou BUILD_FINGERPRINT=htc_europe/htc_primou/primou:$(PLATFORM_VERSION)/$(BUILD_ID)/$(shell date +%Y%m%d%H%M%S):$(TARGET_BUILD_VARIANT)/user-debug PRIVATE_BUILD_DESC="$(PLATFORM_VERSION) $(BUILD_ID) $(shell date +%Y%m%d%H%M%S) user-debug"
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.goo.developerid=rastomanchik \
-	ro.goo.rom=cm_$(TARGET_PRODUCT) \
-	ro.goo.version=$(shell date +%s)
 

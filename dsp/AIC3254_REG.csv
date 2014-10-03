@@ -30,24 +30,6 @@ A04,Call_Uplink_IMIC_Speaker,SET,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w
 
 
 
-A05,Call_Uplink_IMIC_Receiver_DualMIC,SET
-,,REGISTER
-,,VALUE
-
-
-
-A06,Call_Uplink_EMIC_Headphone_DualMIC,SET
-,,REGISTER
-,,VALUE
-
-
-
-A07,Call_Uplink_IMIC_Speaker_DualMIC,SET
-,,REGISTER
-,,VALUE
-
-
-
 A08,Call_Uplink_IMIC_Receiver_TestSIM,SET
 ,,REGISTER
 ,,VALUE
@@ -225,24 +207,6 @@ B03,Call_Downlink_IMIC_Headphone,SET,w,w,w,w,w,w,w,w,w,w,w,w
 B04,Call_Downlink_IMIC_Speaker,SET,w,w,w,w,w,w,w,w,w,w,w,w
 ,,REGISTER,0x00,0x09,0x10,0x11,0x0C,0x0D,0x00,0x40,0x41,0x42,0x3F,0x40
 ,,VALUE,0x01,0x3C,0x00,0x00,0x08,0x10,0x00,0x00,0x00,0x00,0xD6,0x80
-
-
-
-B05,Call_Downlink_IMIC_Receiver_DualMIC,SET,,,,,,,,,,,,
-,,REGISTER,,,,,,,,,,,,
-,,VALUE,,,,,,,,,,,,
-
-
-
-B06,Call_Downlink_EMIC_Headphone_DualMIC,SET,,,,,,,,,,,,
-,,REGISTER,,,,,,,,,,,,
-,,VALUE,,,,,,,,,,,,
-
-
-
-B07,Call_Downlink_IMIC_Speaker_DualMIC,SET
-,,REGISTER
-,,VALUE
 
 
 
