@@ -1,13 +1,8 @@
-USE_CAMERA_STUB := true
+TARGET_SPECIFIC_HEADER_PATH := device/htc/primou/include
 
-# inherit from common msm7x30
--include device/htc/msm7x30-common/BoardConfigCommon.mk
+DEVICE_PACKAGE_OVERLAYS += device/htc/primou/overlay
 
-TARGET_BOOTLOADER_BOARD_NAME := primou
-
-# GPS
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := primou
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
+BOARD_VENDOR := htc
 
 # Parttions and filesystem
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 585101312
@@ -21,39 +16,150 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_VOLD_MAX_PARTITIONS := 36
 
-#dev:        size     erasesize name
-#mmcblk0p17: 00040000 00000200 "misc"
-#mmcblk0p21: 0087f400 00000200 "recovery"
-#mmcblk0p22: 00400000 00000200 "boot"
-#mmcblk0p25: 22dffe00 00000200 "system"
-#mmcblk0p27: 12bffe00 00000200 "cache"
-#mmcblk0p26: 496ffe00 00000200 "userdata"
-#mmcblk0p28: 014bfe00 00000200 "devlog"
-#mmcblk0p29: 00040000 00000200 "pdata"
-
-TARGET_GCC_VERSION_EXP := 4.9
-
 # Kernel
 TARGET_KERNEL_SOURCE := ~/android_kernel
 TARGET_KERNEL_CONFIG := primou_defconfig
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x13F00000
 BOARD_KERNEL_PAGE_SIZE := 4096
+TARGET_KERNEL_NO_MODULES := true
 
-# Recovery
-DEVICE_RESOLUTION := 480x800
-RECOVERY_FSTAB_VERSION := 2
-#TARGET_RECOVERY_INITRC := device/htc/primou/recovery/init.rc
-BOARD_HAS_NO_SELECT_BUTTON := true
-TW_NO_SCREEN_BLANK := true
-ifeq ($(RECOVERY_BUILD),)
-    TARGET_RECOVERY_FSTAB = device/htc/primou/ramdisk/fstab.primou
-else
-    TARGET_RECOVERY_FSTAB = device/htc/primou/recovery/recovery.fstab
-endif
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+# Compiler Optimization
+#ARCH_ARM_HIGH_OPTIMIZATION := true
+#ARCH_ARM_HIGH_OPTIMIZATION_COMPAT := true
+#TARGET_USE_O3 := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := primou
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# Platform
+TARGET_BOARD_PLATFORM := msm7x30
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a8
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_LOWMEM := true
+ARCH_ARM_HAVE_VFP := true
+ARCH_ARM_HAVE_NEON := true
+TARGET_ARCH_VARIANT_CPU := cortex-a8
+TARGET_ARCH_VARIANT_FPU := neon
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Framework flags
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
+# Audio
+BOARD_HAVE_HTC_AUDIO := true
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+
+# Display
+USE_OPENGL_RENDERER := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_NO_HW_VSYNC := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DNO_UPDATE_PREVIEW -DUSE_ION
+BOARD_EGL_CFG := device/htc/primou/configs/egl.cfg
+TARGET_USES_ION := true
+
+# Camera
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
+CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
+TARGET_DISABLE_ARM_PIE := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+BOARD_USES_PMEM_ADSP := true
+USE_CAMERA_STUB := false
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNEEDS_VECTORIMPL_SYMBOLS -DQCOM_LEGACY_CAM_PARAMS
+
+# FM Radio
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := device/htc/primou/bluetooth/vnd_msm7x30.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/primou/bluetooth/include
+
+# GPS
+BOARD_USES_QCOM_GPS := true
+BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := primou
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
+
+# RIL
+BOARD_USE_NEW_LIBRIL_HTC := true
+BOARD_USES_LEGACY_RIL := true
+
+# Usb
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
+
+# WIFI
+WIFI_BAND := 802_11_ABGN
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE := bcmdhd
+WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+BOARD_LEGACY_NL80211_STA_EVENTS := true
+
+# We are not want build recovery
+TARGET_RECOVERY_FSTAB = device/htc/primou/ramdisk/fstab.primou
+
+# MISC
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
+BOARD_SKIP_ANDROID_DOC_BUILD := true
 
 # No SDK blobs
+BUILD_EMULATOR := false
 BUILD_EMULATOR_SENSORS_MODULE := false
 BUILD_EMULATOR_GPS_MODULE := false
+
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    device/htc/primou/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    app.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    file_contexts \
+    hci_init.te \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    keystore.te \
+    kickstart.te \
+    mediaserver.te \
+    rild.te \
+    surfaceflinger.te \
+    system_server.te \
+    ueventd.te \
+    untrusted_app.te \
+    vold.te \
+    wpa.te \
+    wpa_socket.te
