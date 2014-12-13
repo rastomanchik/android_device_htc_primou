@@ -1,4 +1,4 @@
-# common msm7x30 configs
+# Inherit common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 # Ramdisk
@@ -13,9 +13,6 @@ $(call inherit-product-if-exists, vendor/htc/primou/primou-vendor.mk)
 
 # Qcom proprietary
 $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
-
-# Gapps-minimal 
-$(call inherit-product, vendor/gapps_min/gapps-vendor.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.a1026.nsForVoiceRec=0 \
@@ -81,4 +78,3 @@ PRODUCT_COPY_FILES += \
     device/htc/primou/firmware/calibration:system/etc/calibration
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
