@@ -166,7 +166,7 @@ $(call inherit-product, vendor/htc/primou/primou-vendor.mk)
 $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 # Gapps-minimal 
-$(call inherit-product-if-exists, vendor/gapps_min/gapps-vendor.mk)
+#$(call inherit-product-if-exists, vendor/gapps_min/gapps-vendor.mk)
 
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
