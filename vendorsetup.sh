@@ -1,2 +1,0 @@
-add_lunch_combo cm_primou-userdebug
-add_lunch_combo cm_primou-eng
