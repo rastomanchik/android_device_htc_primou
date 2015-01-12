@@ -40,6 +40,7 @@
 /dev/genlock              0666   root       root
 /dev/msm_rotator          0660   system     graphics
 
+/dev/msm_camera/*         0660   system     camera
 /dev/rawchip0             0660   system     camera
 /dev/gemini0              0660   system     camera
 /dev/video*               0660   system     camera
@@ -59,5 +60,6 @@
 
 /dev/ion                  0666   system     system
 
+/dev/system_bus_freq      0660   system     system
 /dev/cpu_dma_latency      0660   system     system
 

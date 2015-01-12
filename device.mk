@@ -16,45 +16,48 @@ PRODUCT_COPY_FILES += \
 
 # Input device config
 PRODUCT_COPY_FILES += \
-	device/htc/primou/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
-	device/htc/primou/idc/primou-keypad.idc:system/usr/idc/primou-keypad.idc \
-	device/htc/primou/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
+	$(LOCAL_PATH)/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+	$(LOCAL_PATH)/idc/primou-keypad.idc:system/usr/idc/primou-keypad.idc \
+	$(LOCAL_PATH)/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
 # Keylayouts and keychars
 PRODUCT_COPY_FILES += \
-	device/htc/primou/keylayout/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
-	device/htc/primou/keylayout/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-	device/htc/primou/keylayout/keylayout/primou-keypad.kl:system/usr/keylayout/primou-keypad.kl \
-	device/htc/primou/keylayout/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
+	$(LOCAL_PATH)/keylayout/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
+	$(LOCAL_PATH)/keylayout/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
+	$(LOCAL_PATH)/keylayout/keylayout/primou-keypad.kl:system/usr/keylayout/primou-keypad.kl \
+	$(LOCAL_PATH)/keylayout/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
 
 # ACDB
 PRODUCT_COPY_FILES += \
-	device/htc/primou/configs/default.acdb:system/etc/firmware/default.acdb \
-	device/htc/primou/configs/default_org.acdb:system/etc/firmware/default_org.acdb
+	$(LOCAL_PATH)/configs/default.acdb:system/etc/firmware/default.acdb \
+	$(LOCAL_PATH)/configs/default_org.acdb:system/etc/firmware/default_org.acdb
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
-	device/htc/primou/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
-	device/htc/primou/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
-	device/htc/primou/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
-	device/htc/primou/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv 
+	$(LOCAL_PATH)/dsp/AdieHWCodec.csv:system/etc/AdieHWCodec.csv \
+	$(LOCAL_PATH)/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
+	$(LOCAL_PATH)/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
+	$(LOCAL_PATH)/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv 
 
 # BCM4330 firmware
 PRODUCT_COPY_FILES += \
-	device/htc/primou/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
-	device/htc/primou/firmware/fw_bcm4330_apsta_b1.bin:system/etc/firmware/fw_bcm4330_apsta_b1.bin \
-	device/htc/primou/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
-	device/htc/primou/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
-	device/htc/primou/firmware/fw_bcm4330_b1.bin:system/etc/firmware/fw_bcm4330_b1.bin \
-	device/htc/primou/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
-	device/htc/primou/firmware/fw_bcm4330_p2p_b1.bin:system/etc/firmware/fw_bcm4330_p2p_b1.bin \
-	device/htc/primou/firmware/calibration:system/etc/calibration
+	$(LOCAL_PATH)/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
+	$(LOCAL_PATH)/firmware/fw_bcm4330_apsta_b1.bin:system/etc/firmware/fw_bcm4330_apsta_b1.bin \
+	$(LOCAL_PATH)/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
+	$(LOCAL_PATH)/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
+	$(LOCAL_PATH)/firmware/fw_bcm4330_b1.bin:system/etc/firmware/fw_bcm4330_b1.bin \
+	$(LOCAL_PATH)/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
+	$(LOCAL_PATH)/firmware/fw_bcm4330_p2p_b1.bin:system/etc/firmware/fw_bcm4330_p2p_b1.bin \
+	$(LOCAL_PATH)/firmware/calibration:system/etc/calibration
 
-# Media Profiles
+# Media
 PRODUCT_COPY_FILES += \
-	device/htc/primou/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/htc/primou/configs/media_codecs.xml:system/etc/media_codecs.xml \
-	device/htc/primou/configs/audio_policy.conf:system/etc/audio_policy.conf
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Common GPS config
 PRODUCT_COPY_FILES += \
@@ -62,16 +65,17 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-	device/htc/primou/ramdisk/init.primou.rc:root/init.primou.rc \
-	device/htc/primou/ramdisk/init.htc7x30.usb.rc:root/init.htc7x30.usb.rc \
-	device/htc/primou/ramdisk/ueventd.primou.rc:root/ueventd.primou.rc \
-	device/htc/primou/ramdisk/fstab.primou:root/fstab.primou
+	$(LOCAL_PATH)/ramdisk/init.primou.rc:root/init.primou.rc \
+	$(LOCAL_PATH)/ramdisk/init.htc7x30.usb.rc:root/init.htc7x30.usb.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.primou.rc:root/ueventd.primou.rc \
+	$(LOCAL_PATH)/ramdisk/fstab.primou:root/fstab.primou
 
 # Device-Specific HALs
 PRODUCT_PACKAGES += \
 	lights.msm7x30 \
 	sensors.msm7x30 \
-	power.msm7x30
+	power.msm7x30 \
+	gps.primou
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -79,49 +83,64 @@ PRODUCT_PACKAGES += \
 	audio.usb.default \
 	audio.primary.msm7x30 \
 	audio_policy.msm7x30 \
+	libaudio-resampler \
 	libaudioutils
 
-# Video
+# Camera
+PRODUCT_PACKAGES += \
+	libsurfaceflinger_client
+
+# Display
 PRODUCT_PACKAGES += \
 	copybit.msm7x30 \
 	gralloc.msm7x30 \
 	hwcomposer.msm7x30  \
+	libgenlock \
 	memtrack.msm7x30
 
-# QCOM OMX
+# OMX
 PRODUCT_PACKAGES += \
-	libstagefrighthw \
-	libOmxCore \
-	libdivxdrmdecrypt \
+	libdashplayer \
 	libOmxVdec \
 	libOmxVenc \
-	libc2dcolorconvert
+	libOmxAacEnc \
+	libOmxAmrEnc \
+	libOmxEvrcEnc \
+	libOmxQcelp13Enc \
+	libstagefrighthw
 
+# Wifi
 PRODUCT_PACKAGES += \
-	com.android.future.usb.accessory \
-	libsurfaceflinger_client \
-	libnetcmdiface
+	libnetcmdiface \
+	macloader \
+	dhcpcd.conf \
+	hostapd \
+	wpa_supplicant \
+	wpa_supplicant.conf
 
-# GPS / BT / Lights / Sensors
+# USB
 PRODUCT_PACKAGES += \
-	libbt-vendor \
-	gps.primou \
-	librpc
+	com.android.future.usb.accessory
 
-# CFX Packages
+# Filesystem management tools
 PRODUCT_PACKAGES += \
-	Torch \
-	e2fsck
+	make_ext4fs \
+	e2fsck \
+	setup_fs
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Misc. property overrides
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.setupwizard.enable_bypass=1 \
-	ro.com.google.locationfeatures=1 \
-	ro.com.google.networklocation=1 \
-	ro.com.google.gmsversion=4.0_r1 \
+	com.qc.hardware=true \
+	debug.composition.type=gpu \
+	debug.egl.hw=1 \
+	debug.sf.hw=1 \
+	debug.sf.no_hw_vsync=1 \
+	video.accelerate.hw=1 \
+	debug.mdpcomp.logs=0 \
+	dev.pm.dyn_samplingrate=1 \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y \
 	dalvik.vm.heapstartsize=5m \
@@ -131,31 +150,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.heapminfree=512k \
 	dalvik.vm.heapmaxfree=2m \
 	dalvik.vm.debug.alloc=0 \
+	media.stagefright.use-awesome=true \
+	persist.hwc.mdpcomp.enable=false \
+	persist.sys.media.use-awesome=true \
+	persist.sys.usb.config=mass_storage,adb \
+	ro.com.google.locationfeatures=1 \
+	ro.com.google.networklocation=1 \
+	ro.com.google.gmsversion=4.0_r1 \
 	ro.config.low_ram=true \
-	ro.sf.lcd_density=240 \
-	ro.vold.umsdirtyratio=20 \
+	ro.opengles.version=131072 \
+	ro.setupwizard.enable_bypass=1 \
 	ro.sys.fw.bg_apps_limit=12 \
 	ro.config.max_starting_bg=6 \
 	ro.zygote.disable_gl_preload=true \
-	debug.sf.hw=1 \
-	debug.egl.hw=1 \
-	video.accelerate.hw=1 \
-	debug.egl.recordable.rgba8888=1 \
-	debug.sf.no_hw_vsync=1 \
-	debug.mdpcomp.logs=0 \
-	dev.pm.dyn_samplingrate=1 \
-	ro.opengles.version=131072 \
-	com.qc.hardware=true \
-	debug.composition.type=gpu \
-	persist.sys.usb.config=mass_storage,adb \
+	wifi.interface=wlan0 \
+	ro.vold.umsdirtyratio=20 \
 	persist.service.adb.enable=1 \
 	persist.service.debuggable=1 \
 	persist.sys.strictmode.visual=0 \
-	persist.sys.strictmode.disable=1 \
-	media.a1026.nsForVoiceRec=0 \
-	media.a1026.enableA1026=0 \
-	htc.audio.alt.enable=0 \
-	htc.audio.hac.enable=1
+	persist.sys.strictmode.disable=1
 
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
