@@ -57,7 +57,7 @@ enum {
      * WARNING - flag is outside the standard PRIVATE region
      * and may need to be moved if the gralloc API changes
      */
-    GRALLOC_USAGE_PRIVATE_UNSYNCHRONIZED  =       0X04000000,
+    GRALLOC_USAGE_PRIVATE_UNSYNCHRONIZED  =       0x04000000,
 
     /* Buffer content should be displayed on an external display only */
     GRALLOC_USAGE_PRIVATE_EXTERNAL_ONLY   =       0x08000000,
