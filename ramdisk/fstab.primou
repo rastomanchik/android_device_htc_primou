@@ -6,5 +6,5 @@
 /dev/block/platform/msm_sdcc.2/by-num/p28         /cache        ext4     noatime,nosuid,nodev,barrier=0          wait
 
 #SDCard
-/devices/platform/msm_sdcc.4/mmc_host/mmc2        auto          auto     defaults                                voldmanaged=sdcard0:1,noemulatedsd
+/devices/platform/msm_sdcc.4/mmc_host/mmc2        auto          auto     defaults                                voldmanaged=sdcard0:auto,noemulatedsd
 

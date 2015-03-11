@@ -66,28 +66,32 @@ PRODUCT_PACKAGES += \
 	audio.usb.default \
 	audio.primary.msm7x30 \
 	audio_policy.msm7x30 \
+	libaudio-resampler \
 	libaudioutils
 	
 # Video
 PRODUCT_PACKAGES += \
 	copybit.msm7x30 \
 	gralloc.msm7x30 \
-	hwcomposer.msm7x30
+	hwcomposer.msm7x30 \
+    memtrack.msm7x30
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
 	libOmxCore \
 	libOmxVdec \
 	libOmxVenc \
-	libc2dcolorconvert \
+    libdivxdrmdecrypt \
 	libstagefrighthw
 	
+#	libc2dcolorconvert \
+
 PRODUCT_PACKAGES += \
 	Torch \
 	com.android.future.usb.accessory \
 	libsurfaceflinger_client \
 	libnetcmdiface
-
+	
 # Ramdisk
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/init.primou.rc:root/init.primou.rc \
@@ -120,9 +124,8 @@ PRODUCT_COPY_FILES += \
 
 # Apps
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/apps/FileManager.apk:data/app/FileManager.apk \
-	$(LOCAL_PATH)/apps/MX_Player.apk:data/app/MX_Player.apk \
-	$(LOCAL_PATH)/apps/FMRadio.apk:data/app/FMRadio.apk
+	$(LOCAL_PATH)/apps/FileManager.apk:system/app/FileManager.apk \
+	$(LOCAL_PATH)/apps/OpenCamera.apk:system/app/Camera2.apk
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -158,6 +161,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	media.a1026.enableA1026=0 \
 	htc.audio.alt.enable=0 \
 	htc.audio.hac.enable=0
+
+# Low Power Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+	lpa.decode=false \
+	lpa.use-stagefright=false
+
+# Extra debugging props
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.strictmode.visual=0 \
+	persist.sys.strictmode.disable=1
+
+# Resampler quality
+PRODUCT_PROPERTY_OVERRIDES += \
+	af.resampler.quality=255
 
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
