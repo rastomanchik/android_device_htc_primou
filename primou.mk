@@ -75,6 +75,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/default.acdb:system/etc/firmware/default.acdb \
 	$(LOCAL_PATH)/configs/default_org.acdb:system/etc/firmware/default_org.acdb
 	
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    ueventd.qcom.rc
+
 # Device-Specific HALs
 PRODUCT_PACKAGES += \
     lights.msm7x30 \

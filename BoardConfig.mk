@@ -69,7 +69,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BUILD_KERNEL := true
 TARGET_KERNEL_SOURCE := ~/android_kernel_ion
 TARGET_KERNEL_CONFIG := primou_defconfig
-BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive androidboot.hardware=qcom
 BOARD_KERNEL_BASE := 0x13F00000
 BOARD_KERNEL_PAGE_SIZE := 4096
 TARGET_KERNEL_NO_MODULES := true
