@@ -15,6 +15,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := scorpion
 TARGET_CPU_SMP := false
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+BOARD_USES_LEGACY_MMAP := true
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
@@ -22,8 +23,8 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 
 # Audio
 BOARD_HAVE_HTC_AUDIO := true
-BOARD_HAVE_PRE_KITKAT_AUDIO_POLICY_BLOB := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_HAVE_PRE_KITKAT_AUDIO_POLICY_BLOB := true
 AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := false
@@ -34,11 +35,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/primou/bluetooth/vnd_msm7x30.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/primou/bluetooth/include
 
-# Boot Animation
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
-TARGET_BOOTANIMATION_USE_RGB565 := true
-
 # Camera
 BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
@@ -46,6 +42,15 @@ BOARD_NEEDS_MEMORYHEAPPMEM := true
 BOARD_USES_PMEM_ADSP := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNO_UPDATE_PREVIEW
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
+# Dex-preoptimization
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
 
 # Display
 BOARD_EGL_CFG := device/htc/primou/configs/egl.cfg
@@ -83,26 +88,28 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-BOARD_USES_LEGACY_MMAP := true
 
 # Misc
-BOARD_NEEDS_MEMORYHEAPPMEM := true
 TARGET_PROVIDES_LIBLIGHT := true
+TARGET_NEEDS_NON_PIE_SUPPORT := true
 EXTENDED_FONT_FOOTPRINT := true
 BLOCK_BASED_OTA := false
-TARGET_NEEDS_NON_PIE_SUPPORT := true
 TARGET_DISABLE_ARM_PIE := true
+
+# Prelink support
+TARGET_NEEDS_PRELINK_SUPPORT := true
 
 # RIL
 BOARD_USE_NEW_LIBRIL_HTC := true
 BOARD_USES_LEGACY_RIL := true
 
-# Prelink support
-TARGET_NEEDS_PRELINK_SUPPORT := true
+# Boot Animation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-
 
 BOARD_SEPOLICY_DIRS += \
     device/htc/primou/sepolicy
@@ -138,25 +145,21 @@ BOARD_SEPOLICY_UNION += \
     wpa.te
 
 # TWRP
-TARGET_RECOVERY_FSTAB := device/htc/primou/ramdisk/fstab.primou
-TARGET_NO_SEPARATE_RECOVERY := true
+TARGET_RECOVERY_FSTAB := device/htc/primou/ramdisk/fstab.qcom
 RECOVERY_FSTAB_VERSION := 2
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 DEVICE_RESOLUTION := 480x800
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_RECOVERY_INITRC := device/htc/primou/recovery/root/init.rc
+TARGET_RECOVERY_INITRC := device/htc/primou/recovery/init.rc
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_EXCLUDE_SUPERSU := true
-TW_INCLUDE_JB_CRYPTO := true
-TW_INCLUDE_DUMLOCK := true
-TW_EXCLUDE_MTP := true
-TW_FLASH_FROM_STORAGE := true
-TW_NO_CPU_TEMP := true
-TW_NO_SCREEN_BLANK := true
-TW_USE_TOOLBOX := true
 TW_INTERNAL_STORAGE_PATH := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_INCLUDE_DUMLOCK := true
+TW_EXCLUDE_SUPERSU := true
+TW_FLASH_FROM_STORAGE := true
+TW_NO_SCREEN_BLANK := true
+TW_USE_TOOLBOX := true
 
 # Usb
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -174,14 +177,3 @@ BOARD_WLAN_DEVICE := bcmdhd
 WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-BOARD_LEGACY_NL80211_STA_EVENTS := true
-
-# Dexpreopt
-ifeq ($(USE_DEXPREOPT),true)
-    # Enable dex-preoptimization to speed up first boot sequence
-    ifeq ($(HOST_OS),linux)
-        ifeq ($(WITH_DEXPREOPT),)
-            WITH_DEXPREOPT := true
-        endif
-    endif
-endif
