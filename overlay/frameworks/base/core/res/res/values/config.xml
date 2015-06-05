@@ -29,9 +29,6 @@
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
-    <!-- Default color for notification LED is green -->
-    <color name="config_defaultNotificationColor">#ff00ff00</color>
-
     <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
 
@@ -60,16 +57,6 @@
          <item>8000</item>
          <item>10240</item>
     </integer-array>
-
-    
-    <!-- Device configuration setting the minfree tunable in the lowmemorykiller in the kernel.
-         A high value will cause the lowmemorykiller to fire earlier, keeping more memory
-         in the file cache and preventing I/O thrashing, but allowing fewer processes to
-         stay in memory.  A low value will keep more processes in memory but may cause
-         thrashing if set too low.  Overrides the default value chosen by ActivityManager
-         based on screen size and total memory for the largest lowmemorykiller bucket, and
-         scaled proportionally to the smaller buckets.  -1 keeps the default. -->
-    <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">38228</integer>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
          in the config_autoBrightnessLevels array.  This array should have size one greater
@@ -189,11 +176,8 @@
         <item>7</item>
     </integer-array>
 
-    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
-
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
+    <bool translatable="false" name="config_wifi_background_scan_support">false</bool>
 
     <!-- Enables or disables fading edges when marquee is enabled in TextView. -->
     <bool name="config_ui_enableFadingMarquee">false</bool>
@@ -204,6 +188,4 @@
     <!-- The VoiceMail default value is displayed to my own number if it is true -->
     <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
 
-    <!-- Disable lockscreen translucent decor by default -->
-    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 </resources>

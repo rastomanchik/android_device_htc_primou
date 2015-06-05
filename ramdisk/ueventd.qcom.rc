@@ -1,0 +1,60 @@
+#for audio
+/dev/adsp                 0660   system     audio
+/dev/msm_acdb	          0660   system     audio
+/dev/msm_aac              0660   system     audio
+/dev/msm_aac_in           0660   system     audio
+/dev/msm_qcelp            0660   system     audio
+/dev/msm_qcelp_in         0660   system     audio
+/dev/msm_evrc             0660   system     audio
+/dev/msm_evrc_in          0660   system     audio
+/dev/msm_mp3*             0660   system     audio
+/dev/msm_amrnb            0660   system     audio
+/dev/msm_amrnb_in         0660   system     audio
+/dev/msm_amrwb            0660   system     audio
+/dev/msm_audio_dev_ctrl   0660   system     audio
+/dev/msm_pcm_in           0660   system     audio
+/dev/msm_pcm_lp_dec       0660   system     audio
+/dev/msm_pcm_out          0660   system     audio
+/dev/htc-acdb             0660   system     audio
+/dev/htc-acoustic         0660   system     audio
+/dev/tpa2051d3	          0660   system     audio
+/dev/msm_mvs              0660   system     audio
+/dev/pmem_adsp            0660   system     audio
+/dev/pmem_audio           0660   system     audio
+/dev/pmem_venc            0660   system     audio
+/dev/msm_vidc*            0660   system     audio
+
+# the genlock client device node is world writable/readable.
+/dev/genlock              0666   system	    system
+
+# HTC diag
+/dev/diag                 0666   root       root
+/dev/htcdiag              0660   radio      radio
+/dev/radio_feedback       0660   radio      radio
+
+/dev/smd*                 0640   radio      radio
+
+# gpu driver for adreno200 is globally accessible
+/dev/ion                  0664   system	    system
+/dev/kgsl-2d0             0666   system	    system
+/dev/kgsl-3d0             0666   system	    system
+
+/dev/graphics/*           0660   system     graphics
+/dev/msm_rotator          0666   system     graphics
+
+/dev/rawchip0             0666   system     camera
+/dev/gemini*              0660   system     camera
+/dev/video*               0660   system     camera
+/dev/media*               0660   system     camera
+/dev/jpeg0                0660   system     camera
+
+/dev/akm8975_daemon       0644   compass    system
+/dev/akm8975_aot          0644   compass    system
+
+# Wifi, Bluetooth and Modem
+/dev/rfkill               0660   root       root
+/dev/ttyHS0               0660   bluetooth  bluetooth
+/dev/ttyMSM0              0660   bluetooth  bluetooth
+/dev/uinput               0660   system     bluetooth
+
+/dev/cpu_dma_latency      0660   system     system

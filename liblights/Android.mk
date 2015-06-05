@@ -27,7 +27,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := lights.c
 LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_PRELINK_MODULE := false
+#LOCAL_PRELINK_MODULE := false
 
 LOCAL_MODULE_TAGS := optional
 
